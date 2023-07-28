@@ -1,0 +1,61 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5; /* Adding a light background color */
+}
+
+h1 {
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center; /* Center the heading */
+}
+
+p {
+    margin: 10px 0; /* Slightly increased the margin */
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px; /* Reduced the margin */
+    color: #007bff; /* Changed the label color to a blue shade */
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc; /* Adding a border to the input */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Adding a smooth hover transition */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+ul {
+    list-style: none;
+    text-align: right;
+    margin: 0; /* Resetting margin to remove default spacing */
+    padding: 0; /* Resetting padding to remove default spacing */
+}
+
+/* Optional: Add some spacing between list items */
+ul li {
+    margin-bottom: 5px;
+}

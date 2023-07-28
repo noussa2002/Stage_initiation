@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../static/css/login.css">
+
+	<title>login</title>
+</head>
+<body>
+	<div class="cred"><img id="logo" src="../static/img/logo.png"></div>
+	<form action="/" method="POST" >
+	<div id="login"><div class="cred"><input name="matricule" type="text" placeholder="   matricule" value="{{matricule}}"></div>
+		<div class="cred"><input name="password" type="password" placeholder="   mot de passe" value="{{password}}"></div>
+				{% if error_message %}
+<div class="error-message" style="color: red;font-size: 15px">{{ error_message }}</div>
+{% endif %}
+
+
+		<div class="cred"><button>connexion</button></div>
+		<div class="cred"><a href="signup">sign-up</a></div>
+	</div>
+
+	</form>
+</body>
+</html>

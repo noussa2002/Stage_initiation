@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/ticket_admin.css">
+    <ul>
+        <li><a href="{{ url_for('logout') }}">Deconnexion</a></li>
+     <li><a href="/admin_home">Accueil</a></li>
+    </ul>
+        <title>ticket</title>
+</head>
+<body>
+    <h1>Intervention Details</h1>
+    <p>N Intervention: {{ nIntervention }}</p>
+    <p>Matricule d'Agent: {{matricule}}</p>
+    <p>Titre d'Intervention: {{ titre }}</p>
+    <p>Date Demande: {{ date_demande }}</p>
+    <p>Categorie d'Intervention: {{ categorie }}</p>
+    <p>Priorite: {{ priorite }}</p>
+    <p>Statut: {{ statut }}</p>
+    <p>Description: {{ description }}</p>
+    <p>Emplacement: {{ emplacement }}</p>
+    <p>Ressource: {{ ressource }}</p>
+    {% if fichier %}
+    <p>Fichier: <a href="{{ fichier }}" target="_blank">View File</a></p>
+{% else %}
+    <p>Fichier: No File Available</p>
+{% endif %}
+     <label for="matriculeTechnicien">Matricule de Technicien:</label>
+    <input type="text" id="matriculeTechnicien" value="{{ matriculeTechnicien }}">
+    <p>Date d'Intervention: {{ date_intervention }}</p>
+    <p>Date de Cloture: {{ date_cloture }}</p>
+    <p>Solution: {{ solution }}</p>
+
+    <button onclick="saveMatricule()" >Save</button>
+
+    <!-- Display an error message if needed -->
+    <div class="error-message" id="errorMessage" style="display: none; color: red; font-size: 15px;"></div>
+
+    <script>
+        function saveMatricule() {
+            const nIntervention = "{{ nIntervention }}";
+            const matriculeTechnicien = document.getElementById("matriculeTechnicien").value;
+
+            // Add any other validation logic if needed
+
+            // Perform the POST request to save the matricule
+            const formData = new FormData();
+            formData.append("nIntervention", nIntervention);
+            formData.append("matriculeTechnicien", matriculeTechnicien);
+
+            fetch('/update_matricule', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+                .then(data=>{
+                 if (data.status === "success") {
+
+                     window.location.href = "/assign_intervention";
+                // Refresh the page upon successful save
+
+                } else {
+                    // Display the error message in the HTML page
+                    document.getElementById("errorMessage").textContent = data.message;
+                    document.getElementById("errorMessage").style.display = "block";
+                }
+            })
+            .catch(error => {
+                console.error('Error saving matricule:', error);
+            });
+        }
+    </script>
+</body>
+</html>

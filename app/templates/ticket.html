@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../static/css/ticket.css">
+
+	<title>creation de ticket</title>
+		<ul id="logout">
+		<a  style="color: black" href="{{ url_for('logout') }}">Deconnexion</a>
+	<li><a style="color: black" href="/accueil">Accueil</a></li></ul>
+</head>
+<main>
+<body>
+
+<br>
+
+<div id="myForm">
+    <h1 id="form">Creation du Ticket</h1>
+	<form action="/ticket" method="POST" enctype="multipart/form-data">
+		<ul>
+			<li>
+				<b>Titre du ticket:</b><span> *</span><br>
+				<input type="text" name="titre" required>
+			</li>
+			<li>
+				<b>Description detaillee:</b><span> *</span><br>
+				<textarea name="description" required></textarea>
+			</li>
+			<li>
+				<b>Priorité:</b><br>
+				<input type="radio" name="priorite" value="faible" required>Faible
+				<input type="radio" name="priorite" value="moyenne" required>Moyenne
+				<input type="radio" name="priorite" value="haute" required>Haute
+			</li>
+			<li>
+				<b>Categorie/Type de probleme:</b><br>
+				<select class="autre-dropdown" name="categorie" onchange="toggleTextArea()">
+					<option>Probleme logiciel</option>
+					<option>Probleme materiel</option>
+					<option>Demande de support</option>
+					<optgroup label="Acces reseau">
+						<option>Problem de connexion LAN</option>
+						<option>Probleme de connexion a l'intranet</option>
+						<option>Probleme de vitesse de reseau</option>
+						<option>Probleme de latence/decalage</option>
+					</optgroup>
+					<option>Autres</option>
+				</select>
+				<div class="text-area-container" style="display: none;">
+					<label for="type-intervention-others">Specifier:</label><br>
+					<textarea id="type-intervention-others" class="others-text"></textarea>
+				</div>
+			</li>
+			<li>
+				<b>Emplacement:</b><br>
+				<input type="text" id="emplacement" name="emplacement" required>
+			</li>
+			<li>
+				<b>Ressource concernee:</b><br>
+				<select class="autre-dropdown" name="ressource" onchange="toggleTextArea()">
+					<option>Ordinateur de bureau</option>
+					<option>Ordinateur portable</option>
+					<option>Imprimante</option>
+					<option>Routeur</option>
+					<option>Comutateur(switch)</option>
+					<option>Logiciel systeme d'exploitation</option>
+					<option>Application bureautique</option>
+					<option>SAP</option>
+					<option>Service Internet</option>
+					<option>Reseaux local</option>
+					<option>Intranet</option>
+					<option>Compte utilisateur</option>
+					<option>Autres</option>
+				</select>
+				<div class="text-area-container" style="display: none;">
+					<label for="ressource-others">Specifier:</label><br>
+					<textarea id="ressource-others" class="others-text"></textarea>
+				</div>
+			</li>
+			<li>
+				<b>Fichier joint:</b><br>
+				<input type="file" name="file">
+			</li>
+			<li>
+				<button id="submit" style="margin-top:10px;" name="submit" value="upload">Soumettre</button>
+			</li>
+		</ul>
+	</form>
+</div>
+
+<script>
+	const dropdowns = document.getElementsByClassName('autre-dropdown');
+	const textAreaContainers = document.getElementsByClassName('text-area-container');
+
+	function toggleTextArea() {
+		for (let i = 0; i < dropdowns.length; i++) {
+			if (dropdowns[i].value === 'Autres') {
+				textAreaContainers[i].style.display = 'block';
+			} else {
+				textAreaContainers[i].style.display = 'none';
+			}
+		}
+	}
+
+	for (let i = 0; i < dropdowns.length; i++) {
+		dropdowns[i].addEventListener('change', toggleTextArea);
+	}
+</script>
+
+</body>
+</main>
+
+</html>

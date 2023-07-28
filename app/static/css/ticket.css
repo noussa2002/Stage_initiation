@@ -1,0 +1,108 @@
+* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+			font-family: Calibri;
+		}
+
+		li {
+			margin-right: 10px;
+			margin-left: 20px;
+			color: black;
+		}
+
+		.log {
+			display: flex;
+			margin-left: 560px;
+		}
+
+		form {
+			border: solid black;
+			background-position: center;
+			justify-content: center;
+			margin: 50px 200px;
+			padding: 20px;
+			color: black;
+			font-size: 20px;
+			background-color: white;
+			margin-bottom: 10px;
+			font-size: 20px;
+		}
+
+		h1 {
+			font-size: 30px;
+		}
+
+		h2,
+		li {
+			margin-bottom: 10px;
+			margin-top: 10px;
+			margin-left: auto;
+		}
+
+		.forum {
+			display: flex;
+			vertical-align: top;
+		}
+
+		.nom {
+			margin-right: 90px;
+		}
+
+		button {
+			font-size: 16px;
+			padding: 10px 20px;
+			cursor: pointer;
+			display: flex;
+			justify-items: center;
+		}
+
+		#submit {
+			display: flex;
+			justify-items: center;
+		}
+
+		span {
+			color: red;
+		}
+
+		#form {
+			margin-top: 20px;
+			font-size: 30px;
+			display: flex;
+			justify-content: center;
+			color: black;
+		}
+
+		input[type="text"]{
+			width: 100%;
+			box-sizing: border-box;
+			margin-bottom: 10px;
+			height: 30px;
+		}
+
+		textarea{
+			width: 100%;
+			box-sizing: border-box;
+			margin-bottom: 10px;
+			height: 50px;
+
+		}
+		main {
+			background-color: #B9D9EB;
+			background-size: cover;
+			height: max-content;
+		}
+
+		body {
+			background-color: #B9D9EB;
+		}
+#logout{
+	 list-style: none;
+	text-align: right;
+	padding: 10px;
+	text-decoration: none;
+	color: black;
+
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../static/css/interventions.css">
+    <title>Users List</title>
+</head>
+<body>
+ <ul>
+        <li><a href="{{ url_for('logout') }}">Deconnexion</a></li>
+     <li><a href="/admin_home">Accueil</a></li>
+    </ul>
+    <h1>Liste des utilisateurs</h1>
+    <br>
+  <label for="matriculeSearch">Search by Matricule:</label>
+    <input type="text" id="matriculeSearch" oninput="searchUsers()">
+
+    <br><br>
+
+    <table style="width: 100%;">
+        <tr >
+            <th>Matricule</th>
+            <th>Role</th>
+            <th>Nombre d'Intervention</th>
+
+        </tr>
+        {% for data_row in data %}
+        <tr >
+            <td>{{ data_row[0] }}</td>
+            <td>
+                 <select name="role" onchange="updateUserRole('{{ data_row[0] }}', this.value)">
+                    <option value="agent" {% if data_row[1] =='agent' %}selected{% endif %}>Agent</option>
+                    <option value="technicien" {% if data_row[1] =='technicien' %}selected{% endif %}>Technicien</option>
+                </select>
+            </td>
+            <td>{{ data_row[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+     <script>
+        function updateUserRole(matricule, newRole) {
+            // Create a new XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+
+            // Configure the request
+            xhr.open('POST', '/users', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            // Define the data to be sent in the request body
+            const data = JSON.stringify({ matricule: matricule, role: newRole });
+
+            // Set up the event handler for when the request is completed
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // The request was successful, update the user role in the table if needed
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            // Optional: Show a success message or perform other actions as needed
+                        } else {
+                            // Optional: Show an error message or perform other actions as needed
+                        }
+                    } else {
+                        // Handle the request error, show an error message or perform other actions as needed
+                    }
+                }
+            };
+
+            // Send the request with the data in the request body
+            xhr.send(data);
+        }
+         // Function to filter the table based on matricule
+          function searchUsers() {
+        const inputElement = document.getElementById('matriculeSearch');
+        const filter = inputElement.value.toUpperCase();
+        const table = document.querySelector('table');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 0; i < rows.length; i++) {
+            const td = rows[i].getElementsByTagName('td')[0];
+            if (td) {
+                const matricule = td.textContent || td.innerText;
+                if (matricule.toUpperCase().indexOf(filter) > -1) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+
+        // If the search bar is empty, display all rows
+        if (filter === '') {
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].style.display = '';
+            }
+        }
+    }
+
+    </script>
+</body>
+</html>

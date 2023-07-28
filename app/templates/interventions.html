@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/interventions.css">
+
+    <title>Intervention</title>
+</head>
+<body>
+    <ul>
+        <li><a href="{{ url_for('logout') }}">Deconnexion</a></li>
+        <li><a style="color: black" href="/accueil">Accueil</a></li>
+    </ul>
+    <br>
+    <h1>Liste des interventions</h1>
+    <br>
+    <table style="width: 100%;">
+        <tr>
+            <th onclick="sortTable(0)">N Intervention</th>
+            <th onclick="sortTable(1)">Titre d'Intervention</th>
+            <th onclick="sortTable(2)">Date Demande</th>
+            <th onclick="sortTable(3)">Categorie d'Intervention</th>
+            <th onclick="sortTable(4)">Priorite</th>
+            <th onclick="sortTable(5)">Statut</th>
+        </tr>
+        {% for data_row in data %}
+        <tr onclick="showModal('{{ data_row[0] }}', '{{ data_row[1] }}', '{{ data_row[2] }}', '{{ data_row[3] }}', '{{ data_row[4] }}', '{{ data_row[5] }}', '{{ data_row[6] }}', '{{ data_row[7] }}', '{{ data_row[8] }}', '', '{{data_row[10]}}', '{{data_row[11]}}', '{{data_row[12]}}', '{{data_row[13]}}')">
+
+
+            <td>{{ data_row[0] }}</td>
+            <td>{{ data_row[1] }}</td>
+            <td>{{ data_row[2] }}</td>
+            <td>{{ data_row[3] }}</td>
+            <td>{{ data_row[4] }}</td>
+            <td>{{ data_row[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Modal Container -->
+    <div class="modal-container" id="ticketModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Ticket Details</h2>
+            <table>
+                <tr>
+                    <td>N Intervention:</td>
+                    <td id="modalNIntervention"></td>
+                </tr>
+                <tr>
+                    <td>Titre d'Intervention:</td>
+                    <td id="modalTitre"></td>
+                </tr>
+                <tr>
+                    <td>Date Demande:</td>
+                    <td id="modalDateDemande"></td>
+                </tr>
+                <tr>
+                    <td>Categorie d'Intervention:</td>
+                    <td id="modalCategorie"></td>
+                </tr>
+                <tr>
+                    <td>Priorite:</td>
+                    <td id="modalPriorite"></td>
+                </tr>
+                <tr>
+                    <td>Statut:</td>
+                    <td id="modalStatut"></td>
+                </tr>
+                 <tr>
+                    <td>Description:</td>
+                    <td id="modaldescription"></td>
+                </tr>
+                <tr>
+                    <td>Emplacement:</td>
+                    <td id="modalemplacement"></td>
+                </tr>
+                <tr>
+                    <td>Ressource:</td>
+                    <td id="modalressource"></td>
+                </tr>
+                <tr>
+                    <td>Fichier:</td>
+                    <td id="modalFileLink">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Matricule de Technicien:</td>
+                    <td id="modalmatriculetechnicien"></td>
+                </tr>
+                 <tr>
+                    <td>Date d'Intervention:</td>
+                    <td id="modaldateintervention"></td>
+                </tr>
+                 <tr>
+                    <td>Date de Cloture:</td>
+                    <td id="modaldatecloture"></td>
+                </tr>
+                    <tr>
+                    <td>Solution:</td>
+                    <td id="modalsolution"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function showModal(nIntervention, titre, dateDemande, categorie, priorite, statut, description, emplacement, ressource, fichier,matriculetechnicien, dateintervention, datecloture,solution ) {
+           console.log("showModal called");
+            const modalNIntervention = document.getElementById("modalNIntervention");
+            const modalTitre = document.getElementById("modalTitre");
+            const modalDateDemande = document.getElementById("modalDateDemande");
+            const modalCategorie = document.getElementById("modalCategorie");
+            const modalPriorite = document.getElementById("modalPriorite");
+            const modalStatut = document.getElementById("modalStatut");
+            const modaldescription =document.getElementById("modaldescription");
+            const modalemplacement =document.getElementById("modalemplacement");
+            const modalressource =document.getElementById("modalressource");
+            const modalFileLink =document.getElementById("modalFileLink");
+            const modalmatriculetechnicien =document.getElementById("modalmatriculetechnicien");
+            const modaldateintervention =document.getElementById("modaldateintervention");
+            const modaldatecloture =document.getElementById("modaldatecloture");
+            const modalsolution =document.getElementById("modalsolution");
+
+            modalNIntervention.textContent = nIntervention;
+            modalTitre.textContent = titre;
+            modalDateDemande.textContent = dateDemande;
+            modalCategorie.textContent = categorie;
+            modalPriorite.textContent = priorite;
+            modalStatut.textContent = statut;
+            modaldescription.textContent =description;
+            modalemplacement.textContent = emplacement;
+            modalressource.textContent = ressource;
+
+       if (fichier && fichier !== "None") {
+            const fileLink = document.createElement('a');
+            fileLink.href = '/uploads/' + fichier; // Set the href attribute to the file URL
+            fileLink.textContent = 'View File';
+            modalFileLink.innerHTML = ''; // Clear any previous content
+            modalFileLink.appendChild(fileLink);
+        } else {
+            modalFileLink.innerHTML = 'No File Available';
+        }
+            modalmatriculetechnicien.textContent = matriculetechnicien;
+            modaldateintervention.textContent = dateintervention;
+            modaldatecloture.textContent = datecloture;
+            modalsolution.textContent = solution;
+
+            const modal = document.getElementById("ticketModal");
+            modal.style.display = "block";
+        }
+        function openFile(url) {
+        window.open(url, '_blank');
+    }
+        function closeModal() {
+            const modal = document.getElementById("ticketModal");
+            modal.style.display = "none";
+        }
+         function sortTable(columnIndex) {
+            const table = document.querySelector('table');
+            const rows = Array.from(table.rows);
+            const headerRow = rows.shift();
+
+            rows.sort((a, b) => {
+                const aCell = a.cells[columnIndex].textContent;
+                const bCell = b.cells[columnIndex].textContent;
+                return aCell.localeCompare(bCell, undefined, { numeric: true, sensitivity: 'base' });
+            });
+
+            rows.unshift(headerRow);
+
+            table.innerHTML = '';
+            rows.forEach(row => table.appendChild(row));
+        }
+        function openFile(url) {
+        window.open(url, '_blank');
+    }
+
+    </script>
+</body>
+</html>

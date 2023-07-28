@@ -1,0 +1,74 @@
+/* Apply a CSS reset to reset default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(../img/blue.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  background-attachment: fixed;
+}
+
+#login {
+  border: solid black;
+  background-color: white;
+  max-width: 300px; /* Limit the maximum width to prevent stretching on large screens */
+  margin: 50px auto; /* Center the login box horizontally */
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.cred {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+#logo {
+  margin-top: 50px;
+  width: 250px; /* Adjust the logo size as needed */
+  height: auto;
+  border-radius: 5px;
+}
+
+button {
+  width: 180px;
+  height: 40px;
+  border: transparent;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+  color: white;
+  font-size: 23px;
+  margin: 10px 0 0 0px;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+input {
+  width: 100%;
+  max-width: 270px;
+  height: 40px;
+  border: transparent;
+  border-radius: 13px;
+  background-color: rgb(232, 232, 232);
+  font-size: 17px;
+  margin-bottom: 15px;
+  padding-right: 20px;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  #login {
+    font-size: 18px; /* Reduce font size for smaller screens */
+  }
+
+  /* Adjust other styles as needed for smaller screens */
+}
+

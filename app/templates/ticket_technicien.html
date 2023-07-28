@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/ticket_admin.css">
+
+    <title>ticket</title>
+</head>
+<body>
+    <h1>Intervention Details</h1>
+    <p>N Intervention: {{ nIntervention }}</p>
+    <p>Matricule d'Agent: {{matricule}}</p>
+    <p>Titre d'Intervention: {{ titre }}</p>
+    <p>Date Demande: {{ date_demande }}</p>
+    <p>Categorie d'Intervention: {{ categorie }}</p>
+    <p>Priorite: {{ priorite }}</p>
+    <p>Statut: <select id="statut">
+        <option value="en attente" {% if statut =="en attente"%}selected{% endif %}>en attente</option>
+        <option value="en cours de traitement" {% if statut =="en cours de traitement" %}selected{% endif %}>en cours de traitement</option>
+        <option value="terminé" {% if statut =="terminé" %}selected{% endif %}>terminé</option>
+    </select></p>
+
+    <p>Description: {{ description }}</p>
+    <p>Emplacement: {{ emplacement }}</p>
+    <p>Ressource: {{ ressource }}</p>
+    {% if fichier %}
+    <p>Fichier: <a href="{{ fichier }}" target="_blank">View File</a></p>
+{% else %}
+    <p>Fichier: No File Available</p>
+{% endif %}
+     <label for="dateintervention">Date d'Intervention:</label>
+    <input type="date" id="dateintervention" value="{{ dateintervention or '' }}"><br>
+    <label for="datecloture">Date de Cloture:</label>
+    <input type="date" id="datecloture" value="{{ datecloture or '' }}"><br>
+    <label for="solution">Solution:</label><br>
+    <textarea  id="solution" >{{ solution or '' }}</textarea>
+    <br>
+
+    <button onclick="savedata()" >Save</button>
+
+    <!-- Display an error message if needed -->
+    <div class="error-message" id="errorMessage" style="display: none; color: red; font-size: 15px;"></div>
+
+    <script>
+        function savedata() {
+            const nIntervention = "{{ nIntervention }}";
+            const statut=document.getElementById("statut").value;
+            const dateintervention = document.getElementById("dateintervention").value;
+            const datecloture = document.getElementById("datecloture").value;
+            const solution = document.getElementById("solution").value;
+
+
+            // Perform the POST request to save the matricule
+            const formData = new FormData();
+            formData.append("nIntervention", nIntervention);
+            formData.append("statut", statut);
+            formData.append("dateintervention", dateintervention);
+            formData.append("datecloture", datecloture);
+            formData.append("solution", solution);
+
+                    fetch('/ticket_technicien', {
+            method: 'POST',
+            body: formData,
+            redirect: "follow"
+        })
+        .then(response => {
+            if (response.redirected) {
+                // Redirect to the technicien_home page
+                window.location.href = response.url;
+            } else {
+                // Display the error message in the HTML page
+                document.getElementById("errorMessage").textContent = "An error occurred.";
+                document.getElementById("errorMessage").style.display = "block";
+            }
+        })
+        .catch(error => {
+            console.error('Error saving data:', error);
+        });
+    }
+    </script>
+</body>
+</html>

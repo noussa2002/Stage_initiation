@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/admin_registration.css">
+    <title>Admin Registration</title>
+
+</head>
+<body>
+
+    <div class="container">
+        <h1>Admin Registration</h1>
+        <form action="/admin_registration" method="post">
+            <label for="matricule">Matricule:</label>
+            <input type="text" id="matricule" name="matricule" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="secret_code">Secret Code:</label>
+            <input type="password" id="secret_code" name="secret_code" required>
+            <input type="submit" value="Register as Admin">
+        </form>
+    </div>
+</body>
+</html>

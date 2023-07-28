@@ -1,0 +1,87 @@
+/* Add CSS reset to remove default browser styling */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Set text color for <span> elements */
+span {
+  color: red;
+}
+
+/* Remove default bullet points and style for <li> elements */
+li {
+  list-style: none;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style for buttons */
+button {
+  width: 180px;
+  height: 40px;
+  border: transparent;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+  color: white;
+  font-size: 23px;
+  margin: 10px 0 0 60px;
+  cursor: pointer;
+}
+
+/* Remove margin for <h1> element */
+h1 {
+  margin-left: 0;
+}
+
+/* Style for the container */
+.container {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Style for the left section of the container */
+.left-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 400px; /* Set a fixed width for the left section */
+  background-color: white;
+  padding: 20px; /* Add padding to the left section */
+  padding-right: 50px;
+  border: solid black; /* Add a border around the left section */
+
+}
+
+/* Style for the right section of the container */
+.right-section {
+  position: absolute;
+  top: 0;
+  left: 320px; /* Adjust the left offset to match the width of the left section */
+  right: 0;
+  bottom: 0;
+  background-image: url("../img/blue.jpg");
+  background-size: cover;
+  background-position: center;
+
+}
+
+/* Style for <input> and <select> elements */
+input,
+select {
+  width: 270px;
+  height: 40px;
+  border: transparent;
+  border-radius: 13px;
+  background-color: rgb(232, 232, 232);
+  font-size: 17px;
+  margin-bottom: 15px;
+  padding-right: 20px;
+}

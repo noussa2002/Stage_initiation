@@ -1,0 +1,100 @@
+/* styles.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+/* Navigation Menu */
+ul.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.nav-menu li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+ul.nav-menu li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+ul.nav-menu li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #333;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Form Styles */
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Admin Home Page Styles */
+.admin-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.admin-container h2 {
+    margin-top: 40px;
+}
+
+/* Other Styles (customize as needed) */
+
+/* Add your additional styles here */
+

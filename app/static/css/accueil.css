@@ -1,0 +1,88 @@
+.cases{
+    display: inline;
+    border: solid;
+    padding: 20px;
+    font-size: 30px;
+     background-color: #B9D9EB;
+    border-radius: 2%;
+    margin: 10px;
+     text-decoration: none;
+    color: black;
+
+    height: 200px; /* Set the height of each case */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin: 10px; /* Add some space between cases */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide any image overflow */
+    transition: transform 0.2s ease-in-out;
+}
+h1{
+    text-align: center;
+}
+body{
+    background-image: url("../img/blue.jpg");
+     background-size: cover;
+}
+h1{
+    margin-bottom: 20px;
+    padding-bottom: 40px;
+    color: white;
+
+}
+.cases:hover {
+    background-color: #333;
+    color: white;
+}
+ul{
+  list-style: none;
+  text-align: right;
+  padding: 10px;
+
+}
+li{
+    color: white;
+}
+
+#logout{
+    color: white;
+}
+#tableau{
+    background-image: url("../img/tableau.png");
+    position: relative;
+    width: 300px; /* Set the width of each case */
+    height: 200px; /* Set the height of each case */
+    background-size: cover; /* Scale the background image to cover the entire case */
+    background-position: center; /* Center the background image within the case */
+    border: 1px solid #ccc;
+    justify-content: center; /* Center the text horizontally */
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    align-items: baseline;
+
+}
+.container{
+display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+#ticket{
+    background-image: url("../img/ticket.jpg");
+     position: relative;
+    width: 300px; /* Set the width of each case */
+    height: 200px; /* Set the height of each case */
+    background-size: cover; /* Scale the background image to cover the entire case */
+    background-position: center; /* Center the background image within the case */
+    border: 1px solid #ccc;
+
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    align-items: baseline;
+
+}
+
+.cases:hover {
+    transform: scale(1.05); /* Increase the size of the case by 5% on hover */
+}
+
